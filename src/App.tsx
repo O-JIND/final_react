@@ -3,7 +3,7 @@ import NavigationMenu from "@/components/navigation-menu"
 import { Outlet, useMatches, useNavigate } from "react-router-dom"
 import Footer from "./components/footer"
 import { RouteHandle, SectionKey, SIDEBAR } from "./components/constants/types"
-import Sidebar from "./components/sidbar"
+import Sidebar from "./components/sidebar"
 import { TOP_SECTIONS } from "./components/constants/types"
 
 //  Generic T --> 나중에 Type 지정 
