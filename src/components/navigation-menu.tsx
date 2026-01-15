@@ -23,7 +23,6 @@ export default function NavigationMenu({ active, onClick, sections }: Props) {
               <button
                 key={item.key}
                 onClick={() => {
-                  console.log(item.key)
                   onClick(item.key)
                 }}
                 className={cn(

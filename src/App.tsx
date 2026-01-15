@@ -29,7 +29,7 @@ export default function App() {
   const title = pickHandle(matches, (h) => h.title, "")
 
   const onClickTopTab = (key: SectionKey) => {
-    // 탭 클릭 시 해당 섹션 대표 페이지로 이동 (URL이 상태의 정답이라 이게 UX가 정상)
+    // 탭 클릭 시 해당 섹션 대표 페이지로 이동 
     const first = SIDEBAR[key]?.[0]
     if (first) navigate(first.to)
   }
