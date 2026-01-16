@@ -39,7 +39,9 @@ export default function App() {
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
       <NavigationMenu active={activeSection} onClick={onClickTopTab} sections={TOP_SECTIONS} />
-      <hr />
+      <div className="mx-auto w-full max-w-7xl px-4">
+        <hr className="border-border" />
+      </div>
 
       {/* 본문이 남는 높이를 먹어서 footer를 아래로 밀어줌 */}
       <div className="flex-1">

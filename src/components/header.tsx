@@ -38,7 +38,7 @@ export default function Header() {
         isVisible ? "translate-y-0" : "-translate-y-full",
       )}
     >
-      <div className="container mx-auto px-4">
+      <div className="mx-auto w-full max-w-7xl px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center gap-2">
