@@ -11,6 +11,15 @@ import Mentoring from "@/pages/Mentoring";
 import Support from "@/pages/Support";
 import MyPageStructure from "./MyPageStruc";
 
+// Admin
+import AdminLayout from "@/admin/AdminLayout";
+import AdminDashboard from "@/pages/admin/AdminDashboard";
+import AdminUsers from "@/pages/admin/AdminUsers";
+import AdminCourses from "@/pages/admin/AdminCourses";
+import AdminContent from "@/pages/admin/AdminContent";
+import AdminSettings from "@/pages/admin/AdminSettings";
+import AdminAudit from "@/pages/admin/AdminAudit";
+
 // 라우터 설정
 // 상위 App (헤더, 네비게이션메뉴, 푸터) -> 하위 라우트들
 // loader로 로딩 전에 권한 확인 loader : AuthLoader
@@ -86,6 +95,22 @@ const router = createBrowserRouter([
             { index: true, element: <MyPage />, handle: { section: "my-page", sidebar: true, title: "마이페이지" } },
             { path: 'settings', element: <MyPage />, handle: { section: "my-page", sidebar: true, title: "마이페이지" } },
             { path: 'notifications', element: <MyPage />, handle: { section: "my-page", sidebar: true, title: "마이페이지" } },
+        ]
+    }
+
+    ,
+
+    // Admin console (separate layout)
+    {
+        path: "/admin",
+        element: <AdminLayout />,
+        children: [
+            { index: true, element: <AdminDashboard />, handle: { title: "대시보드" } },
+            { path: "users", element: <AdminUsers />, handle: { title: "사용자" } },
+            { path: "courses", element: <AdminCourses />, handle: { title: "강의 관리" } },
+            { path: "content", element: <AdminContent />, handle: { title: "콘텐츠" } },
+            { path: "settings", element: <AdminSettings />, handle: { title: "설정" } },
+            { path: "audit", element: <AdminAudit />, handle: { title: "감사 로그" } },
         ]
     }
 
