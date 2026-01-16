@@ -33,17 +33,31 @@ export default function App() {
     const first = SIDEBAR[key]?.[0]
     if (first) navigate(first.to)
   }
+
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Header />
       <NavigationMenu active={activeSection} onClick={onClickTopTab} sections={TOP_SECTIONS} />
       <hr />
-      <div style={{ display: "flex" }}>
-        {showSidebar ? <Sidebar section={activeSection} /> : null}
-        <main>
-          <Outlet />
-        </main>
+
+      {/* 본문이 남는 높이를 먹어서 footer를 아래로 밀어줌 */}
+      <div className="flex-1">
+        <div className="mx-auto w-full max-w-7xl px-4">
+          <div className="flex gap-6 py-6">
+            {showSidebar ? (
+              <div className="w-64 shrink-0">
+                <Sidebar section={activeSection} />
+              </div>
+            ) : null}
+
+            <main className="flex-1 min-w-0">
+              <Outlet />
+            </main>
+          </div>
+        </div>
       </div>
+
       <Footer />
     </div>
   )
