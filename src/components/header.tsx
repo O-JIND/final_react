@@ -5,7 +5,7 @@ import { Search, User, Menu, X, Globe } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { cn } from "@/lib/utils"
-import { ModeToggle } from "./theme-module"
+import ModeToggle from "@/components/theme-module"
 import { useNavigate } from "react-router-dom"
 
 export default function Header() {
@@ -43,7 +43,7 @@ export default function Header() {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <Globe className="w-8 h-8 text-primary" />
-            <span className="text-xl font-bold text-foreground" onClick={() => nav("/")}>LingoCommunity</span>
+            <span className="text-xl font-bold text-foreground" onClick={() => nav("/")}>Node</span>
           </div>
 
           {/* Search Bar - Desktop */}
@@ -63,7 +63,7 @@ export default function Header() {
             <ModeToggle />
 
             {isLoggedIn ? (
-              <Button variant="ghost" size="sm" className="gap-2">
+              <Button variant="ghost" size="sm" className="gap-2" onClick={() => nav("/my-page")}>
                 <User className="w-4 h-4" />
                 My Page
               </Button>

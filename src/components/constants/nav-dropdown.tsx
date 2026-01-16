@@ -1,11 +1,10 @@
 import type React from "react"
-import type { SectionKey } from "./types"
+import { SIDEBAR } from "./types"
+import type { SectionKey, MenuItem } from "./types"
+import type { LucideIcon } from "lucide-react"
 import { BookOpen, Users, MessageCircle, Award, Calendar, Briefcase, HelpCircle } from "lucide-react"
 
-export type NavItem = {
-    id: string
-    label: string
-    to: string
+export type NavItem = MenuItem & {
     icon?: React.ComponentType<{ className?: string }>
 }
 
@@ -19,30 +18,22 @@ export const NAV_DROPDOWN_UI = {
     itemInactiveClass: "text-muted-foreground",
 } as const
 
-export const NAV_DROPDOWN: Record<SectionKey, NavItem[]> = {
-    lectures: [
-        { id: "lec-1", label: "영어", to: "/lectures/english", icon: BookOpen },
-        { id: "lec-2", label: "일본어", to: "/lectures/japanese", icon: BookOpen },
-        { id: "lec-3", label: "중국어", to: "/lectures/chinese", icon: BookOpen },
-        { id: "lec-3", label: "독일어", to: "/lectures/germany", icon: BookOpen },
-    ],
-    community: [
-        { id: "comm-forums", label: "포럼", to: "/community/forums", icon: MessageCircle },
-        { id: "comm-groups", label: "그룹", to: "/community/groups", icon: Users },
-    ],
-    mentoring: [
-        { id: "ment-find", label: "멘토 찾기", to: "/mentoring/find", icon: Users },
-    ],
-    certifications: [
-        { id: "cert-list", label: "자격증 목록", to: "/certifications/list", icon: Award },
-    ],
-    events: [
-        { id: "event-upcoming", label: "다가오는 이벤트", to: "/events/upcoming", icon: Calendar },
-    ],
-    careers: [
-        { id: "careers-jobs", label: "채용 정보", to: "/careers/jobs", icon: Briefcase },
-    ],
-    support: [
-        { id: "support-faq", label: "자주 묻는 질문", to: "/support/faq", icon: HelpCircle },
-    ],
+const SECTION_ICON: Record<SectionKey, LucideIcon> = {
+    lectures: BookOpen,
+    community: MessageCircle,
+    mentoring: Users,
+    certifications: Award,
+    events: Calendar,
+    careers: Briefcase,
+    support: HelpCircle,
 }
+
+export const NAV_DROPDOWN: Record<SectionKey, NavItem[]> = (
+    Object.keys(SIDEBAR) as SectionKey[]
+).reduce((acc, key) => {
+    acc[key] = SIDEBAR[key].map((item) => ({
+        ...item,
+        icon: SECTION_ICON[key],
+    }))
+    return acc
+}, {} as Record<SectionKey, NavItem[]>)

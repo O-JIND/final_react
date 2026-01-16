@@ -1,21 +1,16 @@
 import { NavLink } from "react-router-dom";
-import { SectionKey, SIDEBAR } from "./constants/types";
+import { MYSIDEBAR, SectionKey } from "./constants/types";
 
 
 
-export default function Sidebar({ section }: { section: SectionKey }) {
-    const items = SIDEBAR[section] ?? [];
-
+export default function MySidebar() {
     return (
         <aside style={{ width: 220, borderRight: "1px solid #333", paddingRight: 12 }}>
-            <div style={{ marginBottom: 12, fontWeight: "bold" }}>{section.toUpperCase()}</div>
-
             <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
-                {items.map((item) => (
+                {MYSIDEBAR.map((item) => (
                     <NavLink
                         key={item.id}
                         to={item.to}
-                        end={item.to === `/${section}`}
                         style={({ isActive }) => ({
                             textDecoration: "none",
                             fontWeight: isActive ? "bold" : "normal",

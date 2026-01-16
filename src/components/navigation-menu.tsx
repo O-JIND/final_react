@@ -36,9 +36,9 @@ export default function NavigationMenu({ active, onClick, sections }: Props) {
             return (
               <button
                 key={item.key}
-                type="button"
-                onPointerEnter={() => openNow(item.key)}
-                onClick={() => onClick(item.key)}
+                onClick={() => {
+                  onClick(item.key)
+                }}
                 className={cn(
                   "flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium whitespace-nowrap transition-colors",
                   active === item.key

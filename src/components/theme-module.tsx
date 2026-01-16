@@ -1,30 +1,20 @@
-// src/components/ModeToggle.tsx
-import { useTheme } from "./theme-provider"
+// src/components/theme-toggle.tsx
+import { Switch } from "@/components/ui/theme-switch"
+import { Moon, Sun } from "lucide-react"
+import { useTheme } from "@/components/theme-provider"
 
-export function ModeToggle() {
-    const { theme, setTheme } = useTheme()
+export default function ModeToggle() {
+    const { resolvedTheme, setTheme } = useTheme()
+    const isDark = resolvedTheme === "dark"
 
     return (
-        <div className="flex gap-2 p-4">
-            {/* 현재 어떤 모드인지 확인하며 버튼 클릭 시 변경 */}
-            <button
-                onClick={() => setTheme("light")}
-                className={`px-3 py-1 border rounded ${theme === 'light' ? 'bg-blue-500 text-white' : ''}`}
-            >
-                라이트
-            </button>
-            <button
-                onClick={() => setTheme("dark")}
-                className={`px-3 py-1 border rounded ${theme === 'dark' ? 'bg-blue-500 text-white' : ''}`}
-            >
-                다크
-            </button>
-            <button
-                onClick={() => setTheme("system")}
-                className={`px-3 py-1 border rounded ${theme === 'system' ? 'bg-blue-500 text-white' : ''}`}
-            >
-                브라우저 설정
-            </button>
+        <div className="flex items-center gap-2">
+            <Sun className="h-4 w-4" />
+            <Switch
+                checked={isDark}
+                onCheckedChange={(checked) => setTheme(checked ? "dark" : "light")}
+            />
+            <Moon className="h-4 w-4" />
         </div>
     )
 }
