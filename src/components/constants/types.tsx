@@ -34,13 +34,13 @@ export type TopSection = {
 
 // Nav bar 상단 섹션들
 export const TOP_SECTIONS: TopSection[] = [
-    { key: "lectures", labelKey: "nav.lectures", icon: BookOpen },
-    { key: "community", labelKey: "nav.community", icon: Users },
-    { key: "mentoring", labelKey: "nav.mentoring", icon: MessageCircle },
-    { key: "certifications", labelKey: "nav.certifications", icon: Award },
-    { key: "events", labelKey: "nav.events", icon: Calendar },
-    { key: "careers", labelKey: "nav.careers", icon: Briefcase },
-    { key: "support", labelKey: "nav.support", icon: HelpCircle },
+    { key: "lectures", labelKey: "lectures", icon: BookOpen },
+    { key: "community", labelKey: "community", icon: Users },
+    { key: "mentoring", labelKey: "mentoring", icon: MessageCircle },
+    { key: "certifications", labelKey: "certifications", icon: Award },
+    { key: "events", labelKey: "events", icon: Calendar },
+    { key: "careers", labelKey: "careers", icon: Briefcase },
+    { key: "support", labelKey: "support", icon: HelpCircle },
 ]
 
 

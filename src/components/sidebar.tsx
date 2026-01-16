@@ -13,7 +13,7 @@ export default function Sidebar({ section }: { section: SectionKey }) {
 
     const meta = useMemo(() => TOP_SECTIONS.find((s) => s.key === section), [section])
     const Icon = meta?.icon
-    const title = meta?.label ?? section.toUpperCase()
+    const title = meta?.labelKey ?? section.toUpperCase()
 
     const items = useMemo(() => {
         const list = SIDEBAR[section] ?? []
@@ -101,10 +101,7 @@ export default function Sidebar({ section }: { section: SectionKey }) {
 
                 <Separator />
 
-                {/* Footer */}
-                <div className="px-3 py-2 text-xs text-muted-foreground">
-                    총 <span className="font-medium text-foreground">{items.length}</span>개
-                </div>
+
             </div>
         </aside>
     )
