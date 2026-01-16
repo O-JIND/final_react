@@ -27,7 +27,7 @@ export default function NavigationMenu({ active, onClick, sections }: Props) {
 
   return (
     <nav className="sticky top-0 z-40 bg-card border-b border-border mt-16">
-      <div className="relative container mx-auto px-4">
+      <div className="relative mx-auto w-full max-w-7xl px-4">
         <div
           className="flex items-center justify-center gap-1 overflow-x-auto scrollbar-hide py-2"
           onPointerEnter={onBarEnter}

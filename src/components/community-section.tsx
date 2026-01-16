@@ -1,33 +1,19 @@
 "use client"
+// 번역 작업 추후 수정될 부분 다수이기 때문에 일단 정지
 
 import { ChevronRight, MessageSquare, Heart, Eye, TrendingUp } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Badge } from "@/components/ui/badge"
-import { useTranslation } from "react-i18next"  // ✅ 추가된 부분   
-import type { PostCategoryKey } from "./constants/postCategory"  // ✅ 추가된 부분
-import { POST_CATEGORY_KEYS } from "@/components/constants/postCategory"
 
-export type PopularPost = {
-  id: number
-  titleKey: string
-  authorKey: string
-  avatar: string
-  categoryKey: PostCategoryKey
-  likes: number
-  comments: number
-  views: number
-  isHot: boolean
-}
-
-const popularPosts: PopularPost[] = [
+const popularPosts = [
   {
     id: 1,
-    titleKey: "posts.popular.1.title",
-    authorKey: "posts.popular.1.author",
-    avatar: "/female-avatar-1.png",     // ✅ 그대로
-    categoryKey: "POST_CATEGORY_KEYS.STUDY_TIPS",  // ✅ 수정된 부분
+    title: "Tips for memorizing Korean vocabulary effectively",
+    author: "Sarah K.",
+    avatar: "/female-avatar-1.png",
+    category: "Study Tips",
     likes: 234,
     comments: 45,
     views: 1200,
@@ -35,10 +21,10 @@ const popularPosts: PopularPost[] = [
   },
   {
     id: 2,
-    titleKey: "posts.popular.2.title",
-    authorKey: "posts.popular.2.author",
+    title: "My 6-month journey to Japanese N2",
+    author: "Mike T.",
     avatar: "/male-avatar-1.png",
-    categoryKey: "postCategory.successStory",
+    category: "Success Story",
     likes: 189,
     comments: 32,
     views: 980,
@@ -46,10 +32,10 @@ const popularPosts: PopularPost[] = [
   },
   {
     id: 3,
-    titleKey: "Best resources for learning Spanish pronunciation",
-    authorKey: "Emma L.",
+    title: "Best resources for learning Spanish pronunciation",
+    author: "Emma L.",
     avatar: "/female-avatar-2.png",
-    categoryKey: "postCategory.resources",
+    category: "Resources",
     likes: 156,
     comments: 28,
     views: 756,
@@ -57,10 +43,10 @@ const popularPosts: PopularPost[] = [
   },
   {
     id: 4,
-    titleKey: "Looking for Chinese language exchange partners",
-    authorKey: "David W.",
+    title: "Looking for Chinese language exchange partners",
+    author: "David W.",
     avatar: "/male-avatar-2.png",
-    categoryKey: "postCategory.exchange",
+    category: "Exchange",
     likes: 98,
     comments: 67,
     views: 543,
@@ -68,10 +54,10 @@ const popularPosts: PopularPost[] = [
   },
   {
     id: 5,
-    titleKey: "How I passed TOPIK 6 in one year",
-    authorKey: "Jenny P.",
+    title: "How I passed TOPIK 6 in one year",
+    author: "Jenny P.",
     avatar: "/female-avatar-3.png",
-    categoryKey: "postCategory.successStory",
+    category: "Success Story",
     likes: 312,
     comments: 54,
     views: 1890,
@@ -80,8 +66,6 @@ const popularPosts: PopularPost[] = [
 ]
 
 export default function CommunitySection() {
-  const { t } = useTranslation()  // ✅ 추가된 부분
-
   return (
     <section>
       <div className="flex items-center justify-between mb-6">

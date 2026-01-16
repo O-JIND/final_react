@@ -2,9 +2,7 @@ import Header from "@/components/header"
 import NavigationMenu from "@/components/navigation-menu"
 import { Outlet, useMatches, useNavigate } from "react-router-dom"
 import Footer from "@/components/footer"
-import { RouteHandle, SectionKey, SIDEBAR } from "@/components/constants/types"
-import Sidebar from "@/components/sidebar"
-import { TOP_SECTIONS } from "@/components/constants/types"
+import { RouteHandle, SectionKey, SIDEBAR, TOP_SECTIONS } from "@/components/constants/types"
 import MySidebar from "./my-sidebar"
 
 //  Generic T --> 나중에 Type 지정 
@@ -34,16 +32,24 @@ export default function MyPageStructure() {
         if (first) navigate(first.to)
     }
     return (
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-background flex flex-col">
             <Header />
             <NavigationMenu active={activeSection} onClick={onClickTopTab} sections={TOP_SECTIONS} />
             <hr />
-            <div style={{ display: "flex" }}>
-                <MySidebar />
-                <main>
-                    <Outlet />
-                </main>
+
+            <div className="flex-1">
+                <div className="mx-auto w-full max-w-7xl px-4">
+                    <div className="flex gap-6 py-6">
+                        <div className="w-64 shrink-0">
+                            <MySidebar />
+                        </div>
+                        <main className="flex-1 min-w-0">
+                            <Outlet />
+                        </main>
+                    </div>
+                </div>
             </div>
+
             <Footer />
         </div>
     )
